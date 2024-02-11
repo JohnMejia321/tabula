@@ -1,5 +1,4 @@
 package com.example;
-
 import org.apache.pdfbox.pdmodel.PDDocument;
 import technology.tabula.*;
 import technology.tabula.extractors.BasicExtractionAlgorithm;
@@ -7,6 +6,7 @@ import technology.tabula.extractors.BasicExtractionAlgorithm;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
 
 public class App {
     public static void main(String[] args) {
@@ -29,7 +29,6 @@ public class App {
                 // Extraer las tablas de la página
                 List<Table> tables = bea.extract(page);
 
-
                 // Iterar sobre las tablas
                 for (Table table : tables) {
                     // Iterar sobre las filas de la tabla
@@ -39,7 +38,8 @@ public class App {
                         for (RectangularTextContainer cell : row) {
                             sb.append(cell.getText()).append(",");
                         }
-                        System.out.println(sb.toString());
+                        String finalText = sb.toString().replace(",,", "::").replace(",", ":").replace("::", ",,");
+                        System.out.println(finalText);
                     }
                 }
             }
@@ -51,3 +51,4 @@ public class App {
         }
     }
 }
+
