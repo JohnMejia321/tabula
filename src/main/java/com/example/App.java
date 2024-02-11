@@ -31,8 +31,14 @@ public class App {
 
                 // Iterar sobre las tablas
                 for (Table table : tables) {
+                    int rowCounter = 0;
                     // Iterar sobre las filas de la tabla
                     for (List<RectangularTextContainer> row : table.getRows()) {
+                        // Omitir las dos primeras filas
+                        if (rowCounter < 2) {
+                            rowCounter++;
+                            continue;
+                        }
                         StringBuilder sb = new StringBuilder();
                         // Iterar sobre las celdas de la fila
                         for (RectangularTextContainer cell : row) {
@@ -51,4 +57,3 @@ public class App {
         }
     }
 }
-
